@@ -4,69 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors!</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css"></style>
 </head>
 <body>
-    <script>
-        // Selects a random choice by selecting a random integer between 0 to 2
-        function getComputerChoice() {
-            let randomInt = Math.floor(Math.random() * 3);
-            return randomInt == 0
-                ? "ROCK"
-                : randomInt == 1
-                ? "PAPER"
-                : "SCISSORS";
-        }
-
-        function generateResult(playerSelection, computerSelection) {
-            if (playerSelection == "ROCK") {
-                return computerSelection == "ROCK"
-                    ? "It's a draw! Rock ties against Rock."
-                    : computerSelection == "PAPER"
-                    ? "You Lose! Paper beats Rock."
-                    : "You Win! Rock beats Scissors!"
-            } else if (playerSelection == "PAPER") {
-                return computerSelection == "ROCK"
-                    ? "You Win! Paper beats Rock!"
-                    : computerSelection == "PAPER"
-                    ? "It's a draw! Paper ties against Paper."
-                    : "You Lose! Scissors beats Paper."
-            } else {
-                return computerSelection == "ROCK"
-                    ? "You Lose! Rock beats Scissors!"
-                    : computerSelection == "PAPER"
-                    ? "You Win! Scissors beats Paper."
-                    : "It's a draw! Paper ties against Paper."
-            }
-        }
-
-        // Plays 5 rounds of Rock-Paper-Scissors
-        function playRound() {
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 0; i < 5; i++) {
-                const promptResult = prompt("Please input your choice here!");
-                const playerSelection = promptResult.toUpperCase();
-                if (playerSelection != "ROCK" && playerSelection != "PAPER" && playerSelection != "SCISSORS") {
-                    alert("Please type a proper choice!");
-                    i--;
-                } else {
-                    let result = generateResult(playerSelection, getComputerChoice());
-                    console.log(result);
-                    if (result.slice(0, 5) == "You W") {
-                        playerScore++;
-                        console.log("Player wins this round!");
-                    } else if (result.slice(0, 5) == "You L") {
-                        computerScore++;
-                        console.log("Computer wins this round!");
-                    } else {
-                        console.log("It's a draw this round!")
-                    }
-                }
-            }
-            console.log("Player: " + playerScore + " Computer: " + computerScore);
-        }
-
-        playRound();
-    </script>
+    <div class="header">
+        <p class="header-text">Rock-Paper-Scissors</p>
+        <p class="subheader-text">Make your selection to begin!</p>
+    </div>
+    <div class="buttons">
+        <div class="button-container">
+            <img class="rockimg" src="images/rock.png" alt="Rock">
+            <button id="rock-button">Rock</button>
+        </div>
+        <div class="button-container">
+            <img src="images/paper.png" alt="Paper">
+            <button id="paper-button">Paper</button>
+        </div>
+        <div class="button-container">
+            <img src="images/scissors.png" alt="Scissors">
+            <button id="scissors-button">Scissors</button>
+        </div>
+    </div>
+    <div class="feedback">
+        <p class="result-text">
+            Click on any button to start! 
+        </p>
+        <div class="result">
+            <p class="result-player">Player: 0</p>
+            <p class="result-computer">Computer: 0</p>
+        </div>
+    </div>
 </body>
 </html>
